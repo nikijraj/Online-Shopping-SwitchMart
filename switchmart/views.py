@@ -23,6 +23,7 @@ def browse_products(request):
 
 def product_details(request,pk):
         product = get_object_or_404(Browse, pk=pk)
+        print("Product.pk",product.pk)
         return render(request, 'switchmart/product_details.html', {'product': product})
 
 def cart_page(request):
