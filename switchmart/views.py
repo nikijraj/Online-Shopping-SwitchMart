@@ -12,4 +12,10 @@ OPTIONS = ((1, 'Food'),(2, 'Books'),(3, 'Mobiles'),(4, 'Laptops'),(5, 'Baby Care
 def browse_products(request):
 	products=Browse.objects.all().order_by('price')
 	return render(request, 'switchmart/browse_products.html', {'products':products})
+
+def product_details(request,pk):
+    product = get_object_or_404(Browse, pk=pk)
+    return render(request, 'switchmart/product_details.html', {'product': product})
+
+
 # Create your views here.

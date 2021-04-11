@@ -4,7 +4,7 @@
 		<hr>
 		{% for product in products %}
    		 	<div>
-    	        <p><b>{{ product.prod_name|linebreaksbr }}</b></p>
+				<p><a href="{% url 'product_details' pk=product.pk %}"><b>{{ product.prod_name|linebreaksbr }}</b></a><p>
     	        <p><b>Price:</b> <i> Rs. {{ product.price|linebreaksbr }}</i></p>
 				
 		    </div>

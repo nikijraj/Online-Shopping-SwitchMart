@@ -1,10 +1,14 @@
 <html>
 <head>
-<style></style>
+<style>
+<!--For the Ruby-->
+</style>
 </head>
 <body>
     <div>
-		<span style="text-align: center"><h1><a href="{% url 'browse_products' %}">SwitchMart</a></h1></span>
+		<div><a href="" class="left-button">Recommended Products</a></div>
+		<div style="text-align: center"><h1><a href="{% url 'browse_products' %}">SwitchMart</a></h1></div>
+		<div style="text-align: right"><a href="" class="right-button">Cart</a></div>
 		</hr>
 		{% block content %}
 		{% endblock %}
