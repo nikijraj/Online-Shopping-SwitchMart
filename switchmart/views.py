@@ -30,17 +30,21 @@ def product_details(request,pk):
 
 def cart_page(request):
         cart_obj=Cart.objects.all().order_by('-date')
-        products=cartToBrowse(cart_obj)
-        return render(request, 'switchmart/cart_page.html', {'products': products})
+#       products=cartToBrowse(cart_obj)
+        return render(request, 'switchmart/cart_page.html', {'products': cart_obj})
 
 def create_cart_obj(request,pk):
 		product = get_object_or_404(Browse, pk=pk)
 		in_cart=list(Cart.objects.filter(pk=product.pk))
 		if(not in_cart):
 			Cart.objects.create(pk=product.pk, prod_name=product.prod_name, price=product.price, quantity=1,category=product.category)	
+		else:
+			in_cart[0].quantity+=1	
+			in_cart[0].save()
 				
 		print(product.pk)
-		return redirect('cart_page')
+#		return redirect('cart_page')
+		return redirect('browse_products')
 #       return render(request, 'switchmart/browse_products.html',{})
 
 def remove(request,pk):
@@ -51,16 +55,35 @@ def remove(request,pk):
 
 def recommended(request):
 		cart_items = Cart.objects.all()
-		categories=[]
-		for item in cart_items:
-			categories.append(item.category)
+		if(cart_items):
+			categories=[]
+			for item in cart_items:
+				categories.append(item.category)
 
-		lead_category = statistics.mode(categories)
-		recs = list(Browse.objects.filter(category=lead_category))
-		recs = random.sample(recs,10)
+			lead_category = statistics.mode(categories)
+			recs = list(Browse.objects.filter(category=lead_category))
+			recs = random.sample(recs,10)
+		else:
+			recs = list(Browse.objects.all())
+			recs = random.sample(recs,10)
 #		print(recs.pk)
 		return render(request, 'switchmart/browse_products.html', {'products' : recs})
 
+def qty_up(request,pk):
+		cart_item = get_object_or_404(Cart, pk=pk)
+		print(cart_item.quantity)
+		cart_item.quantity+=1
+		cart_item.save()
+		print(cart_item.quantity)
+		return redirect('cart_page')
+
+def qty_down(request,pk):
+		cart_item = get_object_or_404(Cart, pk=pk)
+		cart_item.quantity-=1
+		cart_item.save()
+		if(cart_item.quantity==0):
+			remove(request,pk)
+		return redirect('cart_page')
 
 		
 

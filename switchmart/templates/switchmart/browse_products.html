@@ -1,15 +1,24 @@
 {% extends 'switchmart/base.html' %}
 
 	{% block content %}
-		<hr>
+		{% url 'browse_products' as the_url %}
+		{% if request.get_full_path == the_url %}
+			<h1><u>Browse for Products</u></h1>
+		{% endif %}
+		{% url 'recommended' as the_url %}
+		{% if request.get_full_path == the_url %}
+			<h1><u>Recommended</u></h1>
+		{% endif %}
+		<hr style="border:3px solid black;">
 		{% for product in products %}
    		 	<div>
 				<p><a href="{% url 'product_details' pk=product.pk %}"><b>{{ product.prod_name|linebreaksbr }}</b></a><p>
+        		<b>Category:</b> <i> {{ product.category }} </i> 
     	        <p><b> Price: </b> <i> Rs. {{ product.price|linebreaksbr }}</i></p>
 				<button onclick="alert('adding to cart...')"> <a href="{% url 'create_cart_obj' pk=product.pk %}">Add to Cart</a></button>
     	        <p><b> PK: </b>{{ product.pk|linebreaksbr }}</p>
 				<br/>	
 		    </div>
-			<hr>
+			<hr style="border:1px solid black;">
 		{% endfor %}
 	{% endblock %}

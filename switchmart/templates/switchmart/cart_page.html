@@ -1,16 +1,21 @@
 {% extends 'switchmart/base.html' %}
 
 	{% block content %}
-		<h2><u>Cart</u></h2>
-		<hr>
+		<h1><u>Cart</u></h1>
+		<hr style="border:3px solid black;">
 		{% for product in products %}
    		 	<div>
 				<p><a href="{% url 'product_details' pk=product.pk %}"><b>{{ product.prod_name|linebreaksbr }}</b></a><p>
+        		<b>Category:</b> <i> {{ product.category }} </i> 
     	        <p><b> Price: </b> <i> Rs. {{ product.price|linebreaksbr }}</i></p>
-    	        <p><b> Quantity: </b> <i> {{ product.quantity|linebreaksbr }}</i></p>
+				<div style="display: inline;">
+    	        <button style="background-color: red;"> <a href="{% url 'qty_down' pk=product.pk %}"><span style="width: 0.5px; margin-left:5px;"><b>-</b></span></a></button> <b> Quantity: </b> {{ product.quantity|linebreaksbr }}<button style="background-color: green;"><a href="{% url 'qty_up' pk=product.pk %}"><span style="width: 0.5px; margin-left:5px; font-color='cobalt';"><b>+</b></span></a></button>
+				</div>
+				<br/>
+				<br/>
 				<button onclick="alert('removing from cart...')"> <a href="{% url 'remove' pk=product.pk %}">Remove from Cart</a></button>
 				<br/>	
 		    </div>
-			<hr>
+			<hr style="border:1px solid black;">
 		{% endfor %}
 	{% endblock %}
