@@ -1,10 +1,11 @@
 {% extends 'switchmart/base.html' %}
 
 {% block content %}
-        <h2>{{ product.prod_name }}</h2>
-        <h3><b>Price:</b> <i> Rs. {{ product.price }} </i> </h3>
-        <h4><p>{{ product.details }}</p></h4>
-		<button> <a href="{% url 'cart_page' %}">Add to Cart</a></button>
+		<h2><u>Product Details</u></h2>
+        <h3>{{ product.prod_name }}</h3>
+        <h4><b>Price:</b> <i> Rs. {{ product.price }} </i> </h4>
+        <h5><p>{{ product.details }}</p></h5>
+		<button> <a href="{% url 'cart_page' pk=product.pk%}">Add to Cart</a></button>
         <hr>
 {% endblock %}
 

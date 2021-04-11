@@ -14,17 +14,16 @@ def cartToBrowse(l1):
                 prod_name=list(Browse.objects.filter(prod_name=product.prod_name))
                 price=list(Browse.objects.filter(price=product.price)) 
                 products.append((list(set(prod_name) & set(price)))[0])
-        print(products)
         return products
 
 def browse_products(request):
-	products=Browse.objects.all().order_by('price')
-	print(len(products))
-	return render(request, 'switchmart/browse_products.html', {'products':products})
+		products=Browse.objects.all().order_by('price')
+		print(len(products))
+		return render(request, 'switchmart/browse_products.html', {'products':products})
 
 def product_details(request,pk):
-    product = get_object_or_404(Browse, pk=pk)
-    return render(request, 'switchmart/product_details.html', {'product': product})
+        product = get_object_or_404(Browse, pk=pk)
+        return render(request, 'switchmart/product_details.html', {'product': product})
 
 def cart_page(request):
         cart_obj=Cart.objects.all().order_by('-date')
@@ -33,9 +32,17 @@ def cart_page(request):
 
 def create_cart_obj(request,pk):
         product = get_object_or_404(Browse, pk=pk)
-        print(product)
-        Cart.objects.create(prod_name=product.prod_name, price=product.price, quantity=1)
+        print(product.pk)
+        blah=Cart.objects.create(pk=product.pk, prod_name=product.prod_name, price=product.price, quantity=1)
+        print("blah.pk",blah.pk)
         return redirect('cart_page')
+#        return render(request, 'switchmart/browse_products.html',{})
+
+def remove(request,pk):
+#		del_item=Cart.objects.get(pk=pk)
+		del_item=get_object_or_404(Cart, pk=pk)
+		del_item.delete()
+		return redirect('cart_page')
 
 
 # Create your views here.
