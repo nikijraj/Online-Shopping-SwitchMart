@@ -1,0 +1,13 @@
+{% extends 'switchmart/base.html' %}
+
+	{% block content %}
+		<hr>
+		{% for product in products %}
+   		 	<div>
+    	        <p><b>{{ product.prod_name|linebreaksbr }}</b></p>
+    	        <p><b>Price:</b> <i> Rs. {{ product.price|linebreaksbr }}</i></p>
+				
+		    </div>
+			<hr>
+		{% endfor %}
+	{% endblock %}
