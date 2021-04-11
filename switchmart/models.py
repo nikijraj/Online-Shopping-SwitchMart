@@ -27,6 +27,7 @@ class Cart(models.Model):
 	prod_name=models.TextField()
 	price=models.TextField()
 	quantity=models.IntegerField(default=1)
+	category=models.TextField()
 
 	def __str__(self):
 		return self.prod_name

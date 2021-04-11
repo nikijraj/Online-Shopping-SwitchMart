@@ -3,9 +3,10 @@
 {% block content %}
 		<h2><u>Product Details</u></h2>
         <h3>{{ product.prod_name }}</h3>
+        <h4><b>Category:</b> <i> {{ product.category }} </i> </h4>
         <h4><b>Price:</b> <i> Rs. {{ product.price }} </i> </h4>
         <h5><p>{{ product.details }}</p></h5>
-		<button> <a href="{% url 'create_cart_obj' pk=product.pk%}">Add to Cart</a></button>
+		<button onclick="alert('adding to cart...')"> <a href="{% url 'create_cart_obj' pk=product.pk%}">Add to Cart</a></button>
         <hr>
 {% endblock %}
 
