@@ -6,7 +6,8 @@
    		 	<div>
 				<p><a href="{% url 'product_details' pk=product.pk %}"><b>{{ product.prod_name|linebreaksbr }}</b></a><p>
     	        <p><b> Price: </b> <i> Rs. {{ product.price|linebreaksbr }}</i></p>
-				<button> <a href="{% url 'create_cart_obj' pk=product.pk %}">Add to Cart</a></button>
+    	        <p><b> Quantity: </b> <i> {{ product.quantity|linebreaksbr }}</i></p>
+				<button> <a href="{% url 'cart_page' %}">Remove from Cart</a></button>
 				<br/>	
 		    </div>
 			<hr>

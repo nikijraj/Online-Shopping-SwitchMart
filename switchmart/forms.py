@@ -6,6 +6,6 @@ class PrefForm(forms.ModelForm):
 
     class Meta:
         model = Filters
-        fields = ('category')
+        fields = ('category',)
 #        exclude = ('user',)
 

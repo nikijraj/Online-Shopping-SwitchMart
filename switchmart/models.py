@@ -23,9 +23,10 @@ class Filters(models.Model):
                 return str(self.category)
 
 class Cart(models.Model):
+	date=models.DateTimeField(default=timezone.now)
 	prod_name=models.TextField()
 	price=models.TextField()
-	quantity=models.IntegerField()
+	quantity=models.IntegerField(default=1)
 
 	def __str__(self):
 		return self.prod_name

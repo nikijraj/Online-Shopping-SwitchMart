@@ -13,8 +13,8 @@ urlpatterns = [
 #	path('search_history/', views.search_history, name='search_history'),
 #	path('search_history/<int:pk>/edit', views.edit_search, name='edit_search'),
 	#path('make_search/matches.html/', views.get_matches, name='matches'),
-#	path('shelving/', views.shelving, name='shelving'),
-#   path('shelf_page/',views.shelf_page, name='shelf_page'),
+	path('cart_page/',views.cart_page, name='cart_page'),
+	path('prod_added/<int:pk>/',views.create_cart_obj, name='create_cart_obj')
 #   path('make_search/shelf_obj/<int:pk>/',views.create_shelf_obj, name='create_shelf_obj'),
 
 #    path('register',views.register,name='register'),

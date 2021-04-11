@@ -4,6 +4,7 @@
         <h2>{{ product.prod_name }}</h2>
         <h3><b>Price:</b> <i> Rs. {{ product.price }} </i> </h3>
         <h4><p>{{ product.details }}</p></h4>
+		<button> <a href="{% url 'cart_page' %}">Add to Cart</a></button>
         <hr>
 {% endblock %}
 
