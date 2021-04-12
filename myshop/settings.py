@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'switchmart.apps.SwitchmartConfig',
-	'multiselectfield',
+#	'multiselectfield',
 ]
 
 MIDDLEWARE = [
