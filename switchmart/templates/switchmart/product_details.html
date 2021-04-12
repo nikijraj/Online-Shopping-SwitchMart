@@ -6,7 +6,7 @@
         <h4><b>Category:</b> <i> {{ product.category }} </i> </h4>
         <h4><b>Price:</b> <i> Rs. {{ product.price }} </i> </h4>
         <h5><p>{{ product.details }}</p></h5>
-		<button onclick="alert('adding to cart...')"> <a href="{% url 'create_cart_obj' pk=product.pk%}">Add to Cart</a></button>
+		<button style="background-color: #d9f1e9;" onclick="alert('adding to cart...')"> <a href="{% url 'create_cart_obj' pk=product.pk%}">Add to Cart</a></button>
         <hr>
 {% endblock %}
 

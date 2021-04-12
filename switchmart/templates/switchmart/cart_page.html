@@ -2,6 +2,11 @@
 
 	{% block content %}
 		<h1><u>Cart</u></h1>
+		{% if total %}
+	        <h3> Total Price: <i> Rs. {{ total }} </i> </h3>
+		{% else %}
+			<h3> Your cart is empty! </h3>
+		{% endif %}
 		<hr style="border:3px solid black;">
 		{% for product in products %}
    		 	<div>

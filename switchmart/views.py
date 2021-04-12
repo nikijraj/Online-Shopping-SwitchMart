@@ -20,18 +20,21 @@ def cartToBrowse(l1):
 
 def browse_products(request):
 		products=Browse.objects.all().order_by('price')
-		print(len(products))
 		return render(request, 'switchmart/browse_products.html', {'products':products})
 
 def product_details(request,pk):
         product = get_object_or_404(Browse, pk=pk)
-        print("Product.pk",product.pk)
         return render(request, 'switchmart/product_details.html', {'product': product})
 
 def cart_page(request):
         cart_obj=Cart.objects.all().order_by('-date')
+        if len(list(cart_obj)):
+            tot_price = sum([item.quantity * item.price for item in list(cart_obj)])
+        else:
+            tot_price = 0
+			
 #       products=cartToBrowse(cart_obj)
-        return render(request, 'switchmart/cart_page.html', {'products': cart_obj})
+        return render(request, 'switchmart/cart_page.html', {'products': cart_obj,'total': tot_price})
 
 def create_cart_obj(request,pk):
 		product = get_object_or_404(Browse, pk=pk)
@@ -42,8 +45,6 @@ def create_cart_obj(request,pk):
 			in_cart[0].quantity+=1	
 			in_cart[0].save()
 				
-		print(product.pk)
-#		return redirect('cart_page')
 		return redirect('browse_products')
 #       return render(request, 'switchmart/browse_products.html',{})
 

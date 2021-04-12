@@ -25,7 +25,8 @@ class Filters(models.Model):
 class Cart(models.Model):
 	date=models.DateTimeField(default=timezone.now)
 	prod_name=models.TextField()
-	price=models.TextField()
+#	price=models.TextField()
+	price=models.IntegerField()
 	quantity=models.IntegerField(default=1)
 	category=models.TextField()
 
