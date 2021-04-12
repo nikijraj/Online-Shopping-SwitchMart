@@ -16,7 +16,6 @@
         		<b>Category:</b> <i> {{ product.category }} </i> 
     	        <p><b> Price: </b> <i> Rs. {{ product.price|linebreaksbr }}</i></p>
 				<button onclick="alert('adding to cart...')"> <a href="{% url 'create_cart_obj' pk=product.pk %}">Add to Cart</a></button>
-    	        <p><b> PK: </b>{{ product.pk|linebreaksbr }}</p>
 				<br/>	
 		    </div>
 			<hr style="border:1px solid black;">
