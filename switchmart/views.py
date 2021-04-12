@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from .models import Browse, Filters, Cart
-from .forms import PrefForm
+#from .forms import PrefForm
 from itertools import chain
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+#from django.contrib.auth import authenticate, login
+#from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.views import View
 import statistics
 import random

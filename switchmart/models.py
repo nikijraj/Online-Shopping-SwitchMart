@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-from multiselectfield import MultiSelectField
+#from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
 
 OPTIONS = ((1, 'Food'),(2, 'Books'),(3, 'Mobiles'),(4, 'Laptops'),(5, 'Baby Care'))
@@ -17,7 +17,7 @@ class Browse(models.Model):
 
 
 class Filters(models.Model):
-        category=MultiSelectField(choices=OPTIONS,blank=True)
+        category=models.TextField()#MultiSelectField(choices=OPTIONS,blank=True)
         
         def __str__(self):
                 return str(self.category)
